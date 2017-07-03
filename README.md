@@ -1,5 +1,5 @@
 # Handwritten-Digit-Classification-Using-CNN
-The objective of this project is to build a image-classifier using Convolutional Neural Networks to accurately categorize the handwritten digits. The data for this project can be found at http://yann.lecun.com/exdb/mnist/ and are expected to be stored in the folder "/data/" relative to the repository.
+The objective of this project is to build a image-classifier using Convolutional Neural Networks to accurately categorize the handwritten digits. The data for this project can be found <a href="http://yann.lecun.com/exdb/mnist/">here</a> and the files are expected to be stored in the folder "/data/" relative to the repository.
 
 # Convolutional Nerual Networks (CNNs)
 Convolutional Neural Networks are a special type of neural networks which are very effective in image recognition and classification. They are powerful as they make use of spatial relationships among the features.
@@ -38,10 +38,10 @@ Then there are fully connected layers with 30 units in the first and 10 (no. of 
 The first layer uses tanh as activation function and the second one uses softmax
 <br>
 <br>
-I also introduced dropouts in between the stacks of layers to avoid overfitting. The ley idea behind dropout is to randomly drop units along with their connections to prevent units from co-adapting too much. Read more <a href="https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf">here</a>.
+I also introduced dropouts in between the stacks of layers to avoid overfitting. The key idea behind dropout is to randomly drop units along with their connections to prevent units from co-adapting too much. Read more <a href="https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf">here</a>.
 
 # MNIST Data
-The data can be found at http://yann.lecun.com/exdb/mnist/
+The data can be found <a href="http://yann.lecun.com/exdb/mnist/">here</a>.
 
 # Training on Data
 
