@@ -53,6 +53,13 @@ I recommend using Anaconda for running the script. Run the following command on 
 The mnist-env.yml file can be found in the repo.
 
 # Training
+Train the classifier by running the following command.
+<br>
+<br>
+<code>python mnist-classifier.py</code>
+<br>
+<br>
+I was able to achieve 97.14% accuracy on training data and 97.86% on test data. I encourage you to play with the architecture and parameters to see what you can achieve. Feel free to discuss the same.
 
 # Classifying New Images
 
