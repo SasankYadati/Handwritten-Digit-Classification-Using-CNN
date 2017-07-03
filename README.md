@@ -35,7 +35,7 @@ All the Convolutional layers defined above have ReLU as activation function.
 <br>
 <br>
 Then there are fully connected layers with 30 units in the first and 10 (no. of o/p units) in the second.
-The first layer uses tanh as activation function and the second one uses softmax
+The first layer uses tanh as activation function and the second one uses softmax.
 <br>
 <br>
 I also introduced dropouts in between the stacks of layers to avoid overfitting. The key idea behind dropout is to randomly drop units along with their connections to prevent units from co-adapting too much. Read more <a href="https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf">here</a>.
@@ -43,8 +43,16 @@ I also introduced dropouts in between the stacks of layers to avoid overfitting.
 # MNIST Data
 The data can be found <a href="http://yann.lecun.com/exdb/mnist/">here</a>.
 
-# Training on Data
+# Environment Setup
+I recommend using Anaconda for running the script. Run the following command on conda shell to create a new environment with all the required packages.
+<br>
+<br>
+<code>conda env create -f mnist-env.yml</code>
+<br>
+<br>
+The mnist-env.yml file can be found in the repo.
+
+# Training
 
 # Classifying New Images
 
-# Resources
