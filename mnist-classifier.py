@@ -1,4 +1,5 @@
 # the next two imports are to ignore few tensorflow warnings
+# comment the next two lines on your system for more details on the warnings.
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
@@ -13,6 +14,7 @@ from keras import metrics
 from keras.utils.np_utils import to_categorical
 from keras import optimizers
 from scipy import misc
+
 # folder url where data is stored
 DATA_PATH = 'data/'
 
@@ -22,49 +24,32 @@ Y_train = idx2numpy.convert_from_file(DATA_PATH + 'train-labels.idx1-ubyte')
 X_test = idx2numpy.convert_from_file(DATA_PATH + 't10k-images.idx3-ubyte')
 Y_test = idx2numpy.convert_from_file(DATA_PATH + 't10k-labels.idx1-ubyte')
 
-misc.imsave('new2.png',X_train[0])
-
-# reshape the data so as to fit the format of (samples, channels, width, height)
-X_train = X_train.reshape(60000, 1, 28, 28).astype('float32')
-X_test = X_test.reshape(10000, 1, 28, 28).astype('float32')
+# reshape the data so as to fit the format of (samples, height, width, channels)
+X_train = X_train.reshape(60000, 28, 28, 1).astype('float32')
+X_test = X_test.reshape(10000, 28, 28, 1).astype('float32')
 
 Y_train = Y_train.reshape(60000)
 Y_test = Y_test.reshape(10000)
-print(X_train[0])
-print(Y_train[0])
 
-Y_train = to_categorical(Y_train)
-Y_test = to_categorical(Y_test)
-print("\n\n")
-print(Y_train[0])
-
-
-# print("X shape is ", X_test.shape)
-# print("Y shape is", Y_test.shape)
-#
-# print("PEACE!")
+Y_train = to_categorical(Y_train, 10)
+Y_test = to_categorical(Y_test, 10)
 
 # MODEL DEFINITION
 model = Sequential()
 
-model.add(Conv2D(filters=8, kernel_size=(2,2), kernel_regularizer=regularizers.l2(0.02), strides=(1,1), padding='valid', activation='relu', data_format='channels_first', input_shape=(1,28,28)))
-model.add(Conv2D(filters=10, kernel_size=(2,2), kernel_regularizer=regularizers.l2(0.02), strides=(1,1), padding='valid', activation='relu'))
-model.add(MaxPooling2D(pool_size=(2,2), strides=(1,1), padding='same'))
+model.add(Conv2D(filters=20, kernel_size=(6,6), kernel_regularizer=regularizers.l2(0.04), strides=(1,1), padding='valid', activation='relu', data_format='channels_last', input_shape=(28,28,1)))
+model.add(Conv2D(filters=20, kernel_size=(3,3), kernel_regularizer=regularizers.l2(0.04), strides=(1,1), padding='valid', activation='relu'))
+model.add(MaxPooling2D(pool_size=(4,4), strides=(1,1)))
+model.add(Dropout(rate=0.05,seed=3))
 
-model.add(Conv2D(filters=12, kernel_size=(2,2), kernel_regularizer=regularizers.l2(0.02), strides=(1,1), padding='valid', activation='relu'))
-model.add(Conv2D(filters=12, kernel_size=(2,2), kernel_regularizer=regularizers.l2(0.02), strides=(1,1), padding='valid', activation='relu'))
-model.add(MaxPooling2D(pool_size=(2,2), strides=(1,1), padding='same'))
-
-model.add(Conv2D(filters=12, kernel_size=(2,2), kernel_regularizer=regularizers.l2(0.02), strides=(1,1), padding='valid', activation='relu'))
-model.add(Conv2D(filters=12, kernel_size=(2,2), kernel_regularizer=regularizers.l2(0.02), strides=(1,1), padding='valid', activation='relu'))
-model.add(MaxPooling2D(pool_size=(2,2), strides=(1,1), padding='same'))
-
-
+model.add(Conv2D(filters=10, kernel_size=(6,6), kernel_regularizer=regularizers.l2(0.04), strides=(1,1), padding='valid', activation='relu'))
+model.add(Conv2D(filters=10, kernel_size=(3,3), kernel_regularizer=regularizers.l2(0.04), strides=(1,1), padding='valid', activation='relu'))
+model.add(MaxPooling2D(pool_size=(4,4), strides=(1,1)))
+model.add(Dropout(rate=0.05,seed=8))
 model.add(Flatten())
 
-model.add(Dense(units=15,activation='sigmoid', kernel_regularizer=regularizers.l2(0.02)))
-model.add(Dropout(rate=0.05,seed=7))
-model.add(Dense(units=10,activation='sigmoid', kernel_regularizer=regularizers.l2(0.02)))
+model.add(Dense(units=30, activation='tanh', kernel_regularizer=regularizers.l2(0.04)))
+model.add(Dense(units=10, activation='softmax', kernel_regularizer=regularizers.l2(0.04)))
 
 # MODEL COMPILATION
 # reduce the learning rate if training accuracy suddenly drops and keeps decreasing
@@ -73,15 +58,15 @@ sgd = optimizers.SGD(lr=0.003) # lr by default is 0.01 for SGD
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=[metrics.categorical_accuracy])
 
 # MODEL FIT
-model.fit(X_train, Y_train, epochs=12, batch_size=30)
+model.fit(X_train, Y_train, epochs=5, batch_size=50)
 model.save('mnist-classifier-model.h5')
-model.save_weights(filepath='mnist-classifier-weights.h5')
+model.save_weights('mnist-classifier-weights.h5')
 
 # MODEL EVALUATION
 print("\nEvaluating the model on test data. This won't take long. Relax!")
-pred = model.predict(X_test,batch_size=1)
-score  = metrics.categorical_accuracy(Y_test, pred)
-print("\nAccuracy on test data : ", score)
+test_loss, test_accuracy = model.evaluate(X_test, Y_test, batch_size=10)
+print("\nAccuracy on test data : ", test_accuracy*100)
+print("\nLoss on test data : ", test_loss)
 
 # manually end the session to avoid occasional exceptions while running the program
 from keras import backend as K

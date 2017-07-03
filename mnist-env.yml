@@ -1,0 +1,74 @@
+name: C:\Users\Shashank\Anaconda3\envs\mnist-cnn
+channels:
+- anaconda-fusion
+- defaults
+dependencies:
+- libgpuarray=0.6.8=vc14_0
+- libpython=2.0=py35_0
+- m2w64-binutils=2.25.1=5
+- m2w64-bzip2=1.0.6=6
+- m2w64-crt-git=5.0.0.4636.2595836=2
+- m2w64-gcc=5.3.0=6
+- m2w64-gcc-ada=5.3.0=6
+- m2w64-gcc-fortran=5.3.0=6
+- m2w64-gcc-libgfortran=5.3.0=6
+- m2w64-gcc-libs=5.3.0=7
+- m2w64-gcc-libs-core=5.3.0=7
+- m2w64-gcc-objc=5.3.0=6
+- m2w64-gmp=6.1.0=2
+- m2w64-headers-git=5.0.0.4636.c0ad18a=2
+- m2w64-isl=0.16.1=2
+- m2w64-libiconv=1.14=6
+- m2w64-libmangle-git=5.0.0.4509.2e5a9a2=2
+- m2w64-libwinpthread-git=5.0.0.4634.697f757=2
+- m2w64-make=4.1.2351.a80a8b8=2
+- m2w64-mpc=1.0.3=3
+- m2w64-mpfr=3.1.4=4
+- m2w64-pkg-config=0.29.1=2
+- m2w64-toolchain=5.3.0=7
+- m2w64-tools-git=5.0.0.4592.90b8472=2
+- m2w64-windows-default-manifest=6.4=3
+- m2w64-winpthreads-git=5.0.0.4634.697f757=2
+- m2w64-zlib=1.2.8=10
+- mako=1.0.6=py35_0
+- markupsafe=0.23=py35_2
+- mingw=4.7=1
+- mkl=2017.0.3=0
+- mkl-service=1.1.2=py35_3
+- msys2-conda-epoch=20160418=1
+- nose=1.3.7=py35_1
+- numpy=1.13.0=py35_0
+- pip=9.0.1=py35_1
+- pygpu=0.6.8=py35_0
+- python=3.5.3=3
+- scipy=0.19.1=np113py35_0
+- setuptools=27.2.0=py35_1
+- six=1.10.0=py35_0
+- theano=0.9.0=py35_0
+- vs2015_runtime=14.0.25420=0
+- wheel=0.29.0=py35_0
+- pip:
+  - backports.weakref==1.0rc1
+  - bleach==1.5.0
+  - cycler==0.10.0
+  - decorator==4.0.11
+  - h5py==2.7.0
+  - html5lib==0.9999999
+  - idx2numpy==1.2.0
+  - keras==2.0.5
+  - markdown==2.2.0
+  - matplotlib==2.0.2
+  - networkx==1.11
+  - olefile==0.44
+  - pillow==4.1.1
+  - protobuf==3.3.0
+  - pyparsing==2.2.0
+  - python-dateutil==2.6.0
+  - pytz==2017.2
+  - pywavelets==0.5.2
+  - pyyaml==3.12
+  - scikit-image==0.13.0
+  - tensorflow==1.2.0
+  - werkzeug==0.12.2
+prefix: C:\Users\Shashank\Anaconda3\envs\mnist-cnn
+
