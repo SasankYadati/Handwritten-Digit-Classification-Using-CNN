@@ -41,7 +41,7 @@ The first layer uses tanh as activation function and the second one uses softmax
 I also introduced dropouts in between the stacks of layers to avoid overfitting. The key idea behind dropout is to randomly drop units along with their connections to prevent units from co-adapting too much. Read more <a href="https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf">here</a>.
 
 # MNIST Data
-The data can be found <a href="http://yann.lecun.com/exdb/mnist/">here</a>.
+The data can be found and is described <a href="http://yann.lecun.com/exdb/mnist/">here</a>.
 
 # Environment Setup
 I recommend using Anaconda for running the script. Run the following command on conda shell to create a new environment with all the required packages.
@@ -50,10 +50,10 @@ I recommend using Anaconda for running the script. Run the following command on 
 <code>conda env create -f mnist-env.yml</code>
 <br>
 <br>
-The mnist-env.yml file can be found in the repo.
+The mnist-env.yml file can be found in the repo, which contains details of all the required packages to run the script.
 
 # Training
-Train the classifier by running the following command.
+You can begin training the classifier by running the following command. Make sure you have activated the environment before you run the script.
 <br>
 <br>
 <code>python mnist-classifier.py</code>
