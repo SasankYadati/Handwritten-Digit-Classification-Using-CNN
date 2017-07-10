@@ -59,7 +59,16 @@ You can begin training the classifier by running the following command. Make sur
 <code>python mnist-classifier.py</code>
 <br>
 <br>
-I was able to achieve 97.14% accuracy on training data and 97.86% on test data. I encourage you to play with the architecture and parameters to see what you can achieve. Feel free to discuss the same.
+I was able to achieve 97.14% accuracy on training data and 97.86% on test data. I encourage you to play with the architecture and the parameters to see what you are able to achieve. Feel free to discuss the same.
 
 # Classifying New Images
-
+The images in MNIST dataset contains only greyscale images and almost all of them are clean. This is because of the purpose the creators had while creating the dataset. So, there is a need for some preprocessing.
+<br>
+<br>
+First off, the images should be converted to greyscale. This is fairly obvious if you have gone through the training script, where we define the number of channels as 1 in the input format.
+<br>
+<br>
+Secondly, all the images should be resized to (28,28) for the same reason mentioned above.
+<br>
+<br>
+Now, you're ready to make predictions on custom images!
